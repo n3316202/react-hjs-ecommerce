@@ -1,8 +1,23 @@
-import { Link, useOutletContext } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../styles/store/styles.css';
+import { useContext } from 'react';
+import { LoginContext } from '../contexts/LoginContext';
 
 const Header = () => {
+  const { state, actions } = useContext(LoginContext);
+  const { isLoggedIn, username } = state;
+  const { setIsLoggedIn, setUsername } = actions;
 
+  const handleLoginAndOut = (event) => {
+    event.preventDefault();
+    if (isLoggedIn) {
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+
+      setIsLoggedIn(false);
+      setUsername(null);
+    }
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -35,8 +50,8 @@ const Header = () => {
             </li>
             {/* dev_02 */}
             <li className="nav-item">
-              <Link className="nav-link" to="/login">
-                로그인
+              <Link className="nav-link" to="/login" onClick={isLoggedIn ? handleLoginAndOut : null}>
+                {isLoggedIn ? `로그아웃(${username})` : `로그인`}
               </Link>
             </li>
             <li>

@@ -7,8 +7,10 @@ const LoginContext = createContext();
 
 // LoginProvider 컴포넌트
 const LoginProvider = ({ children }) => {
+  
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState(null);
+
 
   const value = {
     state: { isLoggedIn, username },
