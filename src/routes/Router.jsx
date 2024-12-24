@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Login } from '../features/auth/components/Login';
 import IndexPage from '../features/store/pages/IndexPage';
 import App from '../App';
+import LoginPage from '../features/auth/pages/LoginPage';
 
 const routes = [
   {
@@ -25,7 +25,7 @@ const routes = [
       {
         path: '/login',
         loader: () => '로그인',
-        element: <Login />,
+        element: <LoginPage />,
       },
     ],
   },

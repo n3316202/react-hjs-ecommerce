@@ -7,11 +7,11 @@ const login = async (user) => {
 };
 
 /** Get Tocken */
-//const getToken = async (user) => {
-//  return await http.post(request.getToken, user);
-//};
+const getUser = async () => {
+  return await http.get('/auth/users/me/');
+};
 
 export default {
   login,
-  //getToken,
+  getUser,
 };
