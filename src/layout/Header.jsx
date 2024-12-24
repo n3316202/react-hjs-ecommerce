@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { LoginContext } from '../contexts/LoginContext';
 
 const Header = () => {
+  // dev_02
   const { state, actions } = useContext(LoginContext);
   const { isLoggedIn, username } = state;
   const { setIsLoggedIn, setUsername } = actions;
