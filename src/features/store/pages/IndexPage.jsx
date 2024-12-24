@@ -1,13 +1,14 @@
 import Header from '../../../layout/Header';
 import Footer from '../../../layout/Footer';
-import { Outlet, useNavigate } from 'react-router-dom';
-import { useContext, useState } from 'react';
-import { LoginContext } from '../../../contexts/LoginContext';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import authService from '../../auth/services/AuthService';
+import { LoginContext } from '../../../contexts/LoginContext';
+import MainPage from '../components/Main';
 
 const IndexPage = () => {
   //LoginContext를 import하고 actions를 셋팅한다음에 값을 변경
-  const { actions } = useContext(LoginContext);
+  const { actions } = LoginContext;
   const { setIsLoggedIn, setUsername } = actions;
 
   const [user, setUser] = useState({ username: '', password: '' });
@@ -45,8 +46,7 @@ const IndexPage = () => {
   return (
     <div className="d-flex flex-column vh-100 justify-content-between">
       <Header />
-      {/* <MainComponent /> */}
-      <Outlet context={{ handleInputChange, onLoginClick }} />
+      <MainPage></MainPage>
       <Footer />
     </div>
   );
